@@ -6,6 +6,25 @@
     <title>FinWei - Financial Lessons</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .lesson-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+            padding: 1.5rem;
+        }
+        .start-learning-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            color: white;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <nav class="bg-blue-600 text-white p-4">
@@ -24,74 +43,74 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Basic Financial Concepts -->
-            <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between min-h-[250px]">
+            <div class="bg-white rounded-lg shadow-lg lesson-card">
                 <div>
                     <i class="fas fa-book text-3xl text-blue-600 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Basic Financial Concepts</h3>
-                    <p class="text-gray-600 mb-4">Learn fundamental financial terms and concepts relevant to the UAE market.</p>
+                    <p class="text-gray-600">Learn fundamental financial terms and concepts relevant to the UAE market.</p>
                 </div>
                 <div>
-                    <a href="/basic-finance" class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">Start Learning</a>
+                    <a href="/basic-finance" class="start-learning-btn bg-blue-600 hover:bg-blue-700">Start Learning</a>
                 </div>
             </div>
 
             <!-- Budgeting Mastery -->
-            <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between min-h-[250px]">
+            <div class="bg-white rounded-lg shadow-lg lesson-card">
                 <div>
                     <i class="fas fa-calculator text-3xl text-green-600 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Budgeting Mastery</h3>
-                    <p class="text-gray-600 mb-4">Master the 50/30/20 rule and other budgeting techniques.</p>
+                    <p class="text-gray-600">Master the 50/30/20 rule and other budgeting techniques.</p>
                 </div>
                 <div>
-                    <a href="/budgeting" class="inline-block w-full text-center bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">Start Learning</a>
+                    <a href="/budgeting" class="start-learning-btn bg-green-600 hover:bg-green-700">Start Learning</a>
                 </div>
             </div>
 
             <!-- Investment Basics -->
-            <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between min-h-[250px]">
+            <div class="bg-white rounded-lg shadow-lg lesson-card">
                 <div>
                     <i class="fas fa-chart-line text-3xl text-purple-600 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Investment Basics</h3>
-                    <p class="text-gray-600 mb-4">Understanding UAE investment opportunities and strategies.</p>
+                    <p class="text-gray-600">Understanding UAE investment opportunities and strategies.</p>
                 </div>
                 <div>
-                    <a href="/investments" class="inline-block w-full text-center bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors">Start Learning</a>
+                    <a href="/investments" class="start-learning-btn bg-purple-600 hover:bg-purple-700">Start Learning</a>
                 </div>
             </div>
 
             <!-- Islamic Finance -->
-            <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between min-h-[250px]">
+            <div class="bg-white rounded-lg shadow-lg lesson-card">
                 <div>
                     <i class="fas fa-mosque text-3xl text-teal-600 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Islamic Finance</h3>
-                    <p class="text-gray-600 mb-4">Learn about Shariah-compliant financial products and principles.</p>
+                    <p class="text-gray-600">Learn about Shariah-compliant financial products and principles.</p>
                 </div>
                 <div>
-                    <a href="/islamic-finance" class="inline-block w-full text-center bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition-colors">Start Learning</a>
+                    <a href="/islamic-finance" class="start-learning-btn bg-teal-600 hover:bg-teal-700">Start Learning</a>
                 </div>
             </div>
 
             <!-- Saving Strategies -->
-            <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between min-h-[250px]">
+            <div class="bg-white rounded-lg shadow-lg lesson-card">
                 <div>
                     <i class="fas fa-piggy-bank text-3xl text-pink-600 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Saving Strategies</h3>
-                    <p class="text-gray-600 mb-4">Effective methods to save money in the UAE context.</p>
+                    <p class="text-gray-600">Effective methods to save money in the UAE context.</p>
                 </div>
                 <div>
-                    <a href="/saving" class="inline-block w-full text-center bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition-colors">Start Learning</a>
+                    <a href="/saving" class="start-learning-btn bg-pink-600 hover:bg-pink-700">Start Learning</a>
                 </div>
             </div>
 
             <!-- Debt Management -->
-            <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between min-h-[250px]">
+            <div class="bg-white rounded-lg shadow-lg lesson-card">
                 <div>
                     <i class="fas fa-hand-holding-usd text-3xl text-orange-600 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Debt Management</h3>
-                    <p class="text-gray-600 mb-4">Understanding and managing debt responsibly in the UAE.</p>
+                    <p class="text-gray-600">Understanding and managing debt responsibly in the UAE.</p>
                 </div>
                 <div>
-                    <a href="/debt" class="inline-block w-full text-center bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition-colors">Start Learning</a>
+                    <a href="/debt" class="start-learning-btn bg-orange-600 hover:bg-orange-700">Start Learning</a>
                 </div>
             </div>
         </div>
