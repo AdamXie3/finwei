@@ -54,6 +54,31 @@ def calculate_budget():
         logging.error(f"Error in calculate_budget: {e}")
         return jsonify({'error': 'Internal Server Error'}), 500
 
+@app.route('/register', methods=['POST'])
+def register():
+    try:
+        data = request.get_json()
+        username = data.get('username')
+        email = data.get('email')
+
+        # Simple validation
+        if not username or not email:
+            return jsonify({'error': 'Username and email are required.'}), 400
+
+        # Check if user already exists
+        if User.query.filter_by(username=username).first() or User.query.filter_by(email=email).first():
+            return jsonify({'error': 'User already exists.'}), 400
+
+        # Create new user
+        new_user = User(username=username, email=email)
+        db.session.add(new_user)
+        db.session.commit()
+
+        return jsonify({'message': 'User registered successfully!'}), 201
+    except Exception as e:
+        logging.error(f"Error in register route: {e}")
+        return jsonify({'error': 'Internal Server Error'}), 500
+
 @app.route('/lessons')
 def lessons():
     return render_template('lessons.html')
