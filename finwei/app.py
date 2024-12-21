@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key'
@@ -28,24 +31,28 @@ def home():
 
 @app.route('/calculate_budget', methods=['POST'])
 def calculate_budget():
-    data = request.get_json()
-    monthly_income = float(data.get('monthly_income', 0))
-    
-    # Calculate budget using 50/30/20 rule
-    needs = monthly_income * 0.5
-    wants = monthly_income * 0.3
-    savings = monthly_income * 0.2
-    
-    return jsonify({
-        'needs': round(needs, 2),
-        'wants': round(wants, 2),
-        'savings': round(savings, 2),
-        'categories': {
-            'needs': ['Housing', 'Utilities', 'Groceries', 'Transportation', 'Insurance'],
-            'wants': ['Entertainment', 'Dining out', 'Shopping', 'Hobbies', 'Travel'],
-            'savings': ['Emergency fund', 'Retirement', 'Investments', 'Debt repayment']
-        }
-    })
+    try:
+        data = request.get_json()
+        monthly_income = float(data.get('monthly_income', 0))
+        
+        # Calculate budget using 50/30/20 rule
+        needs = monthly_income * 0.5
+        wants = monthly_income * 0.3
+        savings = monthly_income * 0.2
+        
+        return jsonify({
+            'needs': round(needs, 2),
+            'wants': round(wants, 2),
+            'savings': round(savings, 2),
+            'categories': {
+                'needs': ['Housing', 'Utilities', 'Groceries', 'Transportation', 'Insurance'],
+                'wants': ['Entertainment', 'Dining out', 'Shopping', 'Hobbies', 'Travel'],
+                'savings': ['Emergency fund', 'Retirement', 'Investments', 'Debt repayment']
+            }
+        })
+    except Exception as e:
+        logging.error(f"Error in calculate_budget: {e}")
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/lessons')
 def lessons():
