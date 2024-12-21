@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWei - Basic Financial Concepts</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">FinWei</h1>
+            <div class="space-x-4">
+                <a href="/" class="hover:text-blue-200">Home</a>
+                <a href="/lessons" class="hover:text-blue-200">Lessons</a>
+                <a href="/#calculator" class="hover:text-blue-200">Budget Calculator</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Basic Financial Concepts</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">Key Financial Terms</h3>
+                <div class="space-y-4">
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Assets</h4>
+                        <p>Things you own that have value (cash, investments, property)</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Liabilities</h4>
+                        <p>Money you owe (loans, credit card debt, mortgages)</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Net Worth</h4>
+                        <p>The difference between your assets and liabilities</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Interest Rate</h4>
+                        <p>The cost of borrowing money or the return on investments</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">UAE Banking System</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Central Bank of the UAE (CBUAE) - The regulatory authority</li>
+                    <li>Types of banks: Commercial, Islamic, Investment</li>
+                    <li>Common account types: Current, Savings, Fixed Deposit</li>
+                    <li>Digital banking and mobile payments</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Knowledge Check</h3>
+                <div class="space-y-4">
+                    <div class="question">
+                        <p class="font-bold mb-2">1. What is net worth?</p>
+                        <div class="space-y-2">
+                            <label class="block">
+                                <input type="radio" name="q1" value="correct"> Assets minus Liabilities
+                            </label>
+                            <label class="block">
+                                <input type="radio" name="q1" value="wrong1"> Total Assets
+                            </label>
+                            <label class="block">
+                                <input type="radio" name="q1" value="wrong2"> Total Income
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button onclick="checkAnswers()" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                        Check Answer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function checkAnswers() {
+            const q1Answer = document.querySelector('input[name="q1"]:checked');
+            if (q1Answer && q1Answer.value === 'correct') {
+                alert('Correct! Net worth is the difference between your assets and liabilities.');
+            } else {
+                alert('Try again! Remember: Net worth = Assets - Liabilities');
+            }
+        }
+    </script>
+</body>
+</html>

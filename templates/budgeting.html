@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWei - Budgeting Mastery</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">FinWei</h1>
+            <div class="space-x-4">
+                <a href="/" class="hover:text-blue-200">Home</a>
+                <a href="/lessons" class="hover:text-blue-200">Lessons</a>
+                <a href="/#calculator" class="hover:text-blue-200">Budget Calculator</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Budgeting Mastery</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">The 50/30/20 Rule</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-green-100 p-4 rounded">
+                        <h4 class="font-bold text-green-800">50% - Needs</h4>
+                        <ul class="text-sm text-green-700 mt-2 list-disc pl-4">
+                            <li>Rent/Housing</li>
+                            <li>Utilities</li>
+                            <li>Groceries</li>
+                            <li>Transportation</li>
+                            <li>Insurance</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded">
+                        <h4 class="font-bold text-blue-800">30% - Wants</h4>
+                        <ul class="text-sm text-blue-700 mt-2 list-disc pl-4">
+                            <li>Entertainment</li>
+                            <li>Dining out</li>
+                            <li>Shopping</li>
+                            <li>Hobbies</li>
+                            <li>Travel</li>
+                        </ul>
+                    </div>
+                    <div class="bg-purple-100 p-4 rounded">
+                        <h4 class="font-bold text-purple-800">20% - Savings</h4>
+                        <ul class="text-sm text-purple-700 mt-2 list-disc pl-4">
+                            <li>Emergency fund</li>
+                            <li>Retirement</li>
+                            <li>Investments</li>
+                            <li>Debt repayment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">UAE-Specific Budgeting Tips</h3>
+                <div class="space-y-4">
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Housing Costs in UAE</h4>
+                        <p>Consider annual rent payments (1-4 cheques) and housing fees (5% of rent)</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Transportation</h4>
+                        <p>Factor in car payments, Salik, parking, or public transport (Nol card)</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Utilities</h4>
+                        <p>DEWA bills, internet, phone plans, and district cooling if applicable</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Groceries</h4>
+                        <p>Compare prices between hypermarkets and local markets</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Interactive Budget Exercise</h3>
+                <div class="space-y-4">
+                    <p>Monthly Income: <input type="number" id="monthly-income" class="border p-2 rounded" placeholder="Enter amount in AED"></p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                        <div id="needs-result" class="bg-green-100 p-4 rounded hidden">
+                            <h4 class="font-bold text-green-800">Needs Budget</h4>
+                            <p id="needs-amount" class="text-2xl text-green-600"></p>
+                        </div>
+                        <div id="wants-result" class="bg-blue-100 p-4 rounded hidden">
+                            <h4 class="font-bold text-blue-800">Wants Budget</h4>
+                            <p id="wants-amount" class="text-2xl text-blue-600"></p>
+                        </div>
+                        <div id="savings-result" class="bg-purple-100 p-4 rounded hidden">
+                            <h4 class="font-bold text-purple-800">Savings Target</h4>
+                            <p id="savings-amount" class="text-2xl text-purple-600"></p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="calculateBudget()" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                        Calculate My Budget
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function calculateBudget() {
+            const income = document.getElementById('monthly-income').value;
+            if (!income || income <= 0) {
+                alert('Please enter a valid monthly income');
+                return;
+            }
+
+            const needs = income * 0.5;
+            const wants = income * 0.3;
+            const savings = income * 0.2;
+
+            document.getElementById('needs-result').classList.remove('hidden');
+            document.getElementById('wants-result').classList.remove('hidden');
+            document.getElementById('savings-result').classList.remove('hidden');
+
+            document.getElementById('needs-amount').textContent = `${needs.toFixed(2)} AED`;
+            document.getElementById('wants-amount').textContent = `${wants.toFixed(2)} AED`;
+            document.getElementById('savings-amount').textContent = `${savings.toFixed(2)} AED`;
+        }
+    </script>
+</body>
+</html>

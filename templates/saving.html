@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWei - Saving Strategies</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">FinWei</h1>
+            <div class="space-x-4">
+                <a href="/" class="hover:text-blue-200">Home</a>
+                <a href="/lessons" class="hover:text-blue-200">Lessons</a>
+                <a href="/#calculator" class="hover:text-blue-200">Budget Calculator</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Saving Strategies in the UAE</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">Smart Saving Techniques</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border p-4 rounded">
+                        <h4 class="font-bold text-pink-600">The 24-Hour Rule</h4>
+                        <p class="mt-2">Wait 24 hours before making non-essential purchases to avoid impulse buying</p>
+                    </div>
+                    <div class="border p-4 rounded">
+                        <h4 class="font-bold text-pink-600">Automated Savings</h4>
+                        <p class="mt-2">Set up automatic transfers to your savings account on payday</p>
+                    </div>
+                    <div class="border p-4 rounded">
+                        <h4 class="font-bold text-pink-600">Cash Envelope System</h4>
+                        <p class="mt-2">Use cash envelopes for different spending categories</p>
+                    </div>
+                    <div class="border p-4 rounded">
+                        <h4 class="font-bold text-pink-600">No-Spend Days</h4>
+                        <p class="mt-2">Designate certain days as no-spending days</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">UAE-Specific Saving Tips</h3>
+                <div class="space-y-4">
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-pink-600">Shopping Seasons</h4>
+                        <ul class="list-disc pl-6 mt-2">
+                            <li>Dubai Shopping Festival (December-January)</li>
+                            <li>Dubai Summer Surprises (July-September)</li>
+                            <li>Ramadan and Eid sales</li>
+                        </ul>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-pink-600">Loyalty Programs</h4>
+                        <ul class="list-disc pl-6 mt-2">
+                            <li>Supermarket loyalty cards</li>
+                            <li>Air miles programs</li>
+                            <li>Credit card rewards</li>
+                        </ul>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-pink-600">Cost-Cutting Strategies</h4>
+                        <ul class="list-disc pl-6 mt-2">
+                            <li>Compare prices between different emirates</li>
+                            <li>Use public transport during peak hours</li>
+                            <li>Shop at local markets for fresh produce</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Savings Goal Calculator</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block mb-2">Savings Goal (AED)</label>
+                        <input type="number" id="savings-goal" class="border p-2 rounded w-full" placeholder="Enter target amount">
+                    </div>
+                    <div>
+                        <label class="block mb-2">Monthly Contribution (AED)</label>
+                        <input type="number" id="monthly-saving" class="border p-2 rounded w-full" placeholder="Enter monthly saving">
+                    </div>
+                    
+                    <button onclick="calculateSavingsTime()" class="mt-4 bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700">
+                        Calculate Time to Goal
+                    </button>
+
+                    <div id="savings-result" class="hidden mt-4 p-4 bg-pink-50 rounded">
+                        <h4 class="font-bold text-pink-800">Time to Reach Goal</h4>
+                        <p id="time-result" class="text-2xl text-pink-600"></p>
+                        <p id="monthly-suggestion" class="text-gray-600 mt-2"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function calculateSavingsTime() {
+            const goal = parseFloat(document.getElementById('savings-goal').value);
+            const monthly = parseFloat(document.getElementById('monthly-saving').value);
+
+            if (!goal || !monthly || goal <= 0 || monthly <= 0) {
+                alert('Please enter valid values');
+                return;
+            }
+
+            const months = Math.ceil(goal / monthly);
+            const years = Math.floor(months / 12);
+            const remainingMonths = months % 12;
+
+            let timeText = '';
+            if (years > 0) {
+                timeText += `${years} year${years > 1 ? 's' : ''} `;
+            }
+            if (remainingMonths > 0) {
+                timeText += `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
+            }
+
+            document.getElementById('savings-result').classList.remove('hidden');
+            document.getElementById('time-result').textContent = timeText;
+            
+            // Suggestion for faster saving
+            const fasterMonthly = Math.ceil(goal / (months * 0.8)); // 20% faster
+            const difference = fasterMonthly - monthly;
+            document.getElementById('monthly-suggestion').textContent = 
+                `Tip: Increasing your monthly saving by ${difference} AED could help you reach your goal 20% faster!`;
+        }
+    </script>
+</body>
+</html>

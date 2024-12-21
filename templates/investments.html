@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWei - Investment Basics</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">FinWei</h1>
+            <div class="space-x-4">
+                <a href="/" class="hover:text-blue-200">Home</a>
+                <a href="/lessons" class="hover:text-blue-200">Lessons</a>
+                <a href="/#calculator" class="hover:text-blue-200">Budget Calculator</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Investment Basics in the UAE</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">Investment Options in UAE</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="border p-4 rounded">
+                        <h4 class="font-bold text-blue-600">Stock Market</h4>
+                        <ul class="list-disc pl-4 mt-2">
+                            <li>Dubai Financial Market (DFM)</li>
+                            <li>Abu Dhabi Securities Exchange (ADX)</li>
+                            <li>NASDAQ Dubai</li>
+                        </ul>
+                    </div>
+                    <div class="border p-4 rounded">
+                        <h4 class="font-bold text-blue-600">Real Estate</h4>
+                        <ul class="list-disc pl-4 mt-2">
+                            <li>Residential Properties</li>
+                            <li>Commercial Properties</li>
+                            <li>REITs (Real Estate Investment Trusts)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">Investment Principles</h3>
+                <div class="space-y-4">
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Diversification</h4>
+                        <p>Spread investments across different asset classes to manage risk</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Risk Management</h4>
+                        <p>Understand your risk tolerance and invest accordingly</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-bold text-blue-600">Long-term Perspective</h4>
+                        <p>Focus on long-term growth rather than short-term gains</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">Getting Started</h3>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-blue-600 pl-4">
+                        <h4 class="font-bold">Step 1: Research</h4>
+                        <p>Understand different investment options and their risks</p>
+                    </div>
+                    <div class="border-l-4 border-blue-600 pl-4">
+                        <h4 class="font-bold">Step 2: Choose a Broker</h4>
+                        <p>Select a licensed broker in the UAE</p>
+                    </div>
+                    <div class="border-l-4 border-blue-600 pl-4">
+                        <h4 class="font-bold">Step 3: Start Small</h4>
+                        <p>Begin with a small amount and learn from experience</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Investment Risk Calculator</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block mb-2">Investment Amount (AED)</label>
+                        <input type="number" id="investment-amount" class="border p-2 rounded w-full" placeholder="Enter amount">
+                    </div>
+                    <div>
+                        <label class="block mb-2">Risk Level</label>
+                        <select id="risk-level" class="border p-2 rounded w-full">
+                            <option value="conservative">Conservative (4-6% return)</option>
+                            <option value="moderate">Moderate (6-8% return)</option>
+                            <option value="aggressive">Aggressive (8-12% return)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Investment Period (Years)</label>
+                        <input type="number" id="investment-years" class="border p-2 rounded w-full" placeholder="Enter years">
+                    </div>
+                    
+                    <button onclick="calculateReturn()" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                        Calculate Potential Return
+                    </button>
+
+                    <div id="result" class="hidden mt-4 p-4 bg-gray-100 rounded">
+                        <h4 class="font-bold">Potential Investment Value</h4>
+                        <p id="result-value" class="text-2xl text-blue-600"></p>
+                        <p id="result-return" class="text-gray-600"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function calculateReturn() {
+            const amount = parseFloat(document.getElementById('investment-amount').value);
+            const years = parseInt(document.getElementById('investment-years').value);
+            const riskLevel = document.getElementById('risk-level').value;
+
+            if (!amount || !years || amount <= 0 || years <= 0) {
+                alert('Please enter valid values');
+                return;
+            }
+
+            let rate;
+            switch(riskLevel) {
+                case 'conservative':
+                    rate = 0.05; // 5% average
+                    break;
+                case 'moderate':
+                    rate = 0.07; // 7% average
+                    break;
+                case 'aggressive':
+                    rate = 0.10; // 10% average
+                    break;
+            }
+
+            const futureValue = amount * Math.pow(1 + rate, years);
+            const totalReturn = futureValue - amount;
+
+            document.getElementById('result').classList.remove('hidden');
+            document.getElementById('result-value').textContent = `${futureValue.toFixed(2)} AED`;
+            document.getElementById('result-return').textContent = `Total Return: ${totalReturn.toFixed(2)} AED`;
+        }
+    </script>
+</body>
+</html>
