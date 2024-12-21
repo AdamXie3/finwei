@@ -27,7 +27,12 @@ class Budget(db.Model):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    try:
+        logging.debug("Home route accessed")
+        return render_template('index.html')
+    except Exception as e:
+        logging.error(f"Error in home route: {e}")
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/calculate_budget', methods=['POST'])
 def calculate_budget():
@@ -81,11 +86,21 @@ def register():
 
 @app.route('/lessons')
 def lessons():
-    return render_template('lessons.html')
+    try:
+        logging.debug("Lessons route accessed")
+        return render_template('lessons.html')
+    except Exception as e:
+        logging.error(f"Error in lessons route: {e}")
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/islamic-finance')
 def islamic_finance():
-    return render_template('islamic_finance.html')
+    try:
+        logging.debug("Islamic Finance route accessed")
+        return render_template('islamic_finance.html')
+    except Exception as e:
+        logging.error(f"Error in islamic finance route: {e}")
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/map')
 def map():
