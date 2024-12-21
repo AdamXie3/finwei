@@ -97,6 +97,16 @@ def map():
         logging.error(f"Error in map route: {e}")
         return "Internal Server Error", 500
 
+@app.route('/pets')
+def pets():
+    try:
+        pets = Budget.query.all()  # Adjust this if you have a separate Pet model
+        logging.debug(f"Fetched pets: {pets}")
+        return render_template('pets.html', pets=pets)
+    except Exception as e:
+        logging.error(f"Error in pets route: {e}")
+        return "Internal Server Error", 500
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
