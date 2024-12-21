@@ -62,6 +62,16 @@ def lessons():
 def islamic_finance():
     return render_template('islamic_finance.html')
 
+@app.route('/map')
+def map():
+    try:
+        users = User.query.all()  # Ensure this query is correct
+        logging.debug(f"Fetched users: {users}")
+        return render_template('map.html', users=users)
+    except Exception as e:
+        logging.error(f"Error in map route: {e}")
+        return "Internal Server Error", 500
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
