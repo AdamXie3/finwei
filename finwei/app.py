@@ -138,6 +138,10 @@ def pets():
 def calculator():
     return render_template('calculator.html')
 
+@app.route('/cost_of_living')
+def cost_of_living():
+    return render_template('cost_of_living.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
