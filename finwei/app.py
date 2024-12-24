@@ -134,6 +134,10 @@ def pets():
         logging.error(f"Error in pets route: {e}")
         return jsonify({'error': 'Internal Server Error'}), 500
 
+@app.route('/calculator')
+def calculator():
+    return render_template('calculator.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
