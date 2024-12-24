@@ -73,5 +73,34 @@
             <a href="#" class="hover:text-blue-200">Contact Us</a>
         </div>
     </footer>
+
+    <script>
+        async function calculateBudget() {
+            const monthlyIncome = document.getElementById('monthly-income').value;
+            if (!monthlyIncome || monthlyIncome <= 0) {
+                alert('Please enter a valid monthly income');
+                return;
+            }
+
+            try {
+                const response = await fetch('/calculate_budget', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ monthly_income: monthlyIncome }),
+                });
+
+                const data = await response.json();
+                document.getElementById('budget-results').classList.remove('hidden');
+                document.getElementById('needs-amount').textContent = `${data.needs} AED`;
+                document.getElementById('wants-amount').textContent = `${data.wants} AED`;
+                document.getElementById('savings-amount').textContent = `${data.savings} AED`;
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while calculating the budget');
+            }
+        }
+    </script>
 </body>
 </html>
