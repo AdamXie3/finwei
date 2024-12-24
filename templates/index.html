@@ -15,6 +15,7 @@
                 <a href="/" class="hover:text-blue-200">Home</a>
                 <a href="/lessons" class="hover:text-blue-200">Lessons</a>
                 <a href="/calculator" class="hover:text-blue-200">Budget Calculator</a>
+                <a href="/cost_of_living" class="hover:text-blue-200">Cost of Living Calculator</a>
             </div>
         </div>
     </nav>
@@ -31,35 +32,10 @@
 
     <main class="container mx-auto p-4 mt-4">
         <section class="py-12">
-            <h3 class="text-3xl font-bold text-gray-800 mb-4">Budget Calculator</h3>
-            <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6 mb-8">
-                <label class="block text-gray-700 mb-2" for="monthly-income">Monthly Income (AED)</label>
-                <input type="number" id="monthly-income" class="w-full p-2 border rounded" placeholder="Enter your monthly income">
-                <button onclick="calculateBudget()" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 mt-4">
-                    Calculate Budget
-                </button>
-                <div id="budget-results" class="mt-6 hidden">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-green-100 p-4 rounded">
-                            <h4 class="font-bold text-green-800">Needs (50%)</h4>
-                            <p id="needs-amount" class="text-2xl text-green-600"></p>
-                        </div>
-                        <div class="bg-blue-100 p-4 rounded">
-                            <h4 class="font-bold text-blue-800">Wants (30%)</h4>
-                            <p id="wants-amount" class="text-2xl text-blue-600"></p>
-                        </div>
-                        <div class="bg-purple-100 p-4 rounded">
-                            <h4 class="font-bold text-purple-800">Savings (20%)</h4>
-                            <p id="savings-amount" class="text-2xl text-purple-600"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="py-12">
             <h3 class="text-3xl font-bold text-gray-800 mb-4">About the Founder</h3>
-            <p class="text-xl text-gray-600 mb-4">I am Adam Xie, a 16-year-old CEO of Finwei. My passion for financial literacy drives me to create resources that help others navigate their financial journeys.</p>
+            <p class="text-xl text-gray-600 mb-4">I am Ziye Xie, a 16-year-old CEO of Finwei. My passion for financial literacy drives me to create resources that help others navigate their financial journeys.</p>
         </section>
+
         <section class="py-12">
             <h3 class="text-3xl font-bold text-gray-800 mb-4">What We Offer</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -73,17 +49,20 @@
                 </div>
             </div>
         </section>
+
         <section class="py-12">
             <h3 class="text-3xl font-bold text-gray-800 mb-4">Who We Serve</h3>
             <p class="text-xl text-gray-600 mb-4">Finwei is tailored for individuals in the UAE, including residents and expatriates, who are seeking reliable information and resources to improve their financial literacy.</p>
         </section>
+
         <section class="py-12">
             <h3 class="text-3xl font-bold text-gray-800 mb-4">Cost of Living Catalogue</h3>
             <p class="text-xl text-gray-600 mb-4">Explore our updated catalogue of the cost of living in the UAE, which includes average expenses for housing, groceries, transportation, and more, helping you budget effectively.</p>
         </section>
+
         <section class="py-12">
-            <h3 class="text-3xl font-bold text-gray-800 mb-4">People at Work</h3>
-            <img src="https://example.com/path-to-image.jpg" alt="People working" class="w-full max-w-md mx-auto mb-4 rounded-lg shadow-lg">
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Our Community</h3>
+            <img src="https://example.com/path-to-image.jpg" alt="Community engagement" class="w-full max-w-md mx-auto mb-4 rounded-lg shadow-lg">
             <p class="text-xl text-gray-600 mb-4">Our community is dedicated to fostering financial literacy and empowerment.</p>
         </section>
     </main>
@@ -95,34 +74,5 @@
             <a href="#" class="hover:text-blue-200">Contact Us</a>
         </div>
     </footer>
-
-    <script>
-        async function calculateBudget() {
-            const monthlyIncome = document.getElementById('monthly-income').value;
-            if (!monthlyIncome || monthlyIncome <= 0) {
-                alert('Please enter a valid monthly income');
-                return;
-            }
-
-            try {
-                const response = await fetch('/calculate_budget', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ monthly_income: monthlyIncome }),
-                });
-
-                const data = await response.json();
-                document.getElementById('budget-results').classList.remove('hidden');
-                document.getElementById('needs-amount').textContent = `${data.needs} AED`;
-                document.getElementById('wants-amount').textContent = `${data.wants} AED`;
-                document.getElementById('savings-amount').textContent = `${data.savings} AED`;
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred while calculating the budget');
-            }
-        }
-    </script>
 </body>
 </html>
