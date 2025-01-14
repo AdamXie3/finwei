@@ -1,16 +1,10 @@
-{
-  "name": "finwei",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "start": "vite preview --port $PORT"
-  },
-  "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "vite": "^4.2.0",
-    "@vitejs/plugin-react": "^4.3.4",
-    "react-router-dom": "^6.0.0"
-  }
+"dependencies": {
+  "react": "^19.0.0",
+  "react-dom": "^19.0.0",
+  "vite": "^4.2.0",
+  "@vitejs/plugin-react": "^4.3.4",
+  "react-router-dom": "^6.0.0",
+  "@mui/material": "^5.0.0", // Make sure this line is present
+  "@emotion/react": "^11.0.0", // Make sure this line is present
+  "@emotion/styled": "^11.0.0" // Make sure this line is present
 }
