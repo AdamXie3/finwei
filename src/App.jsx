@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Tabs, Tab, Typography, Box } from '@mui/material';
 import Home from './pages/Home';
 import Lessons from './pages/Lessons';
-import BudgetCalculator from './src/BudgetCalculator'; 
+import BudgetCalculator from './pages/BudgetCalculator'; 
 
 const App = () => {
   const [value, setValue] = useState(0);
