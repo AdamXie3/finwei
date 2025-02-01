@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinWei - Empowering Financial Literacy</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">FinWei</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#lessons">Lessons</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="cta">Start Your Journey</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Empowering Financial Literacy in the UAE</h1>
+    <p>Equip yourself with the knowledge and tools to make informed financial decisions.</p>
+    <button class="cta">Explore Our Tools</button>
+  </section>
+
+  <!-- Key Features Section -->
+  <section class="features">
+    <div class="feature">
+      <h2>AI Budget Calculator</h2>
+      <p>Plan your finances with our AI-powered tool.</p>
+    </div>
+    <div class="feature">
+      <h2>Interactive Lessons</h2>
+      <p>Learn at your own pace with engaging content.</p>
+    </div>
+    <div class="feature">
+      <h2>Cost of Living Insights</h2>
+      <p>Powered by real-time data from Numbeo.</p>
+    </div>
+  </section>
+
+  <!-- AI Budget Calculator -->
+  <section class="calculator">
+    <h2>AI Budget Calculator</h2>
+    <form onsubmit="event.preventDefault(); calculateBudget();">
+      <label for="income">Monthly Income (AED):</label>
+      <input type="number" id="income" required>
+      
+      <label for="rent">Rent (AED):</label>
+      <input type="number" id="rent" required>
+      
+      <label for="groceries">Groceries (AED):</label>
+      <input type="number" id="groceries" required>
+      
+      <label for="transport">Transportation (AED):</label>
+      <input type="number" id="transport" required>
+      
+      <button type="submit" class="cta">Calculate</button>
+    </form>
+    <div id="result"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 FinWei. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>
